@@ -305,6 +305,7 @@ body {
     padding-right: 16.6%;
 }
 .feature {
+    display: flex;
     width: 85%;
     padding: 3%;
     margin: 3%;
@@ -316,15 +317,19 @@ body {
 .feature:hover{
     border: #f44121 solid 1px;
 }
-.feature-icon {
+
+.feature-icon{
+    margin-right: 7%;
+}
+.ic-box {
     color: #f44121;
     padding: 1rem;
     margin: 0.5rem;
     border: #cacaca 1px solid;
     display: flex;
     float: left;
-    margin-bottom: 3.5rem;
-    margin-right: 2.5rem;
+    margin-bottom: 18%;
+    margin-right: 10%;
 }
 #aboutus {
     background-color: #f2f2f2;
@@ -931,6 +936,7 @@ body {
         padding-right: 0;
     }
     .feature {
+        display: block;
         width: 85%;
         margin: 5%;
         font-size: medium;
