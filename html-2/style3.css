@@ -220,7 +220,8 @@ body {
     top: 1rem;
 }
 #mone-title {
-    font-size: 140%;
+    font-size: 160%;
+    font-weight:800;
     border-bottom: #f44121 solid 2px;
     position: relative;
     top: -1.7rem;
@@ -282,7 +283,7 @@ body {
 }
 .message {
     display: block;
-    padding-right: 20%;
+    padding-right: 21.5%;
     margin: 2%;
     margin-top: 4%;
 }
@@ -294,11 +295,11 @@ body {
     font-size: larger;
 }
 #features {
-    width: 70%;
+    width: 68%;
     display: grid;
     grid-template-columns: auto auto auto;
     padding-left: 15.4%;
-    padding-right: 14.6%;
+    padding-right: 16.6%;
 }
 .feature {
     width: 90%;
@@ -307,6 +308,9 @@ body {
     margin-left: 5%;
     border: #cacaca solid 1px;
     font-size: large;
+}
+.feature:hover{
+    border: #f44121 solid 1px;
 }
 .feature-icon {
     color: #f44121;
@@ -400,16 +404,27 @@ body {
     height: 4px;
     color: white;
 }
+.tri1{
+  width: 0; 
+  height: 0; 
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 17px solid #f44121;
+  position: relative;
+  top: -50px;
+  left: 37%;
+  padding: 0.0%;
+}
 .progress-percent1 {
     background-color: #f44121;
     color: white;
     border-radius: 50%;
-    padding: 3.5% 2%;
+    padding: 4.5% 2.5%;
     font-size: small;
     font-weight: bold;
     position: relative;
-    top: -60px;
-    left: 33.5%;
+    top: -87px;
+    left: 33%;
 }
 .progress-bar2 {
     width: 60%;
@@ -417,15 +432,26 @@ body {
     height: 4px;
     color: white;
 }
+.tri2{
+  width: 0; 
+  height: 0; 
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 17px solid #f44121;
+  position: relative;
+  top: -50px;
+  left: 57%;
+  padding: 0.0%;
+}
 .progress-percent2 {
     background-color: #f44121;
     color: white;
     border-radius: 50%;
-    padding: 3.5% 2%;
+    padding: 4.5% 2.5%;
     font-size: small;
     font-weight: bold;
     position: relative;
-    top: -60px;
+    top: -87px;
     left: 53.5%;
 }
 .progress-bar3 {
@@ -434,15 +460,26 @@ body {
     height: 4px;
     color: white;
 }
+.tri3{
+  width: 0; 
+  height: 0; 
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 17px solid #f44121;
+  position: relative;
+  top: -50px;
+  left: 77%;
+  padding: 0.0%;
+}
 .progress-percent3 {
     background-color: #f44121;
     color: white;
     border-radius: 50%;
-    padding: 3.5% 2%;
+    padding: 4.5% 2.5%;
     font-size: small;
     font-weight: bold;
     position: relative;
-    top: -60px;
+    top: -87px;
     left: 73.5%;
 }
 .donation-info {
@@ -478,29 +515,24 @@ body {
 .videostory {
     position: relative;
     height: 100%;
-    padding-top: 3%;
+    padding-top: 2%;
+    max-width: 100%;
+    display: inline-block;
 }
 .img1 {
-    position: relative;
     width: 100%;
-    height: auto;
-    z-index: 1;
+    height: 100%;
+    object-fit:contain;
+    display: block;
+    opacity: 0.6;
 }
 .img2 {
     position: absolute;
-    top: 120px;
-    left: 42%;
-    z-index: 3;
-    width: 15%;
-}
-.img1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 13%;
+    height: auto;
 }
 .story-text {
     height: 100%;
@@ -547,22 +579,16 @@ body {
     object-fit: cover;
     display: block;
 }
-.gallery-main>div:nth-child(1),
-.gallery-main>div:nth-child(4) {
+.gallery-main>div:nth-child(1),.gallery-main>div:nth-child(4) {
     flex: 2;
 }
-.i1,
-.i4 {
+.i1,.i4 {
     height: 100%;
 }
-.gallery-main>div:nth-child(2),
-.gallery-main>div:nth-child(3) {
+.gallery-main>div:nth-child(2),.gallery-main>div:nth-child(3) {
     flex: 1;
 }
-.i2,
-.i3,
-.i5,
-.i6 {
+.i2,.i3,.i5,.i6 {
     height: 50%;
 }
 #volunteer {
@@ -692,6 +718,9 @@ body {
     color: white;
     text-decoration: none;
 }
+.points:hover{
+    color: #f44121;
+}
 .line2 {
     display: inline-block;
     width: 100%;
@@ -793,8 +822,7 @@ body {
     }
     .sectionhome {
         width: 100%;
-        height: 300px;
-        min-height: 200px;
+        max-height: 280px;
         padding: 0;
     }
     .slider-txt {
@@ -807,8 +835,7 @@ body {
     .slider-slider {
         display: none;
     }
-    .slider::before,
-    .slider::after {
+    .slider::before,.slider::after {
         display: none;
     }
     .slider-title::before {
@@ -830,7 +857,7 @@ body {
         z-index: -1;
     }
     #mone-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         border-bottom: #f44121 solid 2px;
         position: relative;
         top: 15%;
@@ -938,6 +965,30 @@ body {
     .causeitems {
         flex-direction: column;
     }
+    .progress-percent1 {
+        top: -100px;
+        left: 33%;
+    }
+    .tri1{
+        top:-10vh;
+        left:37%;
+    }
+    .progress-percent2 {
+        top: -100px;
+        left: 53%;
+    }
+    .tri2{
+        top:-10vh;
+        left:57%;
+    }
+    .progress-percent3 {
+        top: -100px;
+        left: 73%;
+    }
+    .tri3{
+        top:-10vh;
+        left:77%;
+    }
     .causeitem {
         margin-left: 5%;
         margin-right: 5%;
@@ -975,8 +1026,8 @@ body {
     }
     .img2 {
         width: 15%;
-        top: 40%;
-        left: 42%;
+        top: 50%;
+        left: 50%;
     }
     .story-text {
         padding-left: 0%;
@@ -994,18 +1045,10 @@ body {
     .gallery-grow {
         flex-grow: 1;
     }
-    .gallery-main>div:nth-child(1),
-    .gallery-main>div:nth-child(2),
-    .gallery-main>div:nth-child(4),
-    .gallery-main>div:nth-child(3) {
+    .gallery-main>div:nth-child(1),.gallery-main>div:nth-child(2),.gallery-main>div:nth-child(4),.gallery-main>div:nth-child(3) {
         flex: 1;
     }
-    .i1,
-    .i2,
-    .i3,
-    .i4,
-    .i5,
-    .i6 {
+    .i1,.i2,.i3,.i4,.i5,.i6 {
         height: 100%;
     }
     #volunteer {
@@ -1117,4 +1160,4 @@ body {
         margin-top: 5%;
         display: inline-block;
     }
-}
+}   
