@@ -948,6 +948,10 @@ body {
     }
     .ablayouts-2 {
         order: 2;
+        padding-left: 2%;
+    }
+    .ablayouts-3 {
+        padding-left: 2%;
     }
     .aboutitem {
         margin-left: 3%;
