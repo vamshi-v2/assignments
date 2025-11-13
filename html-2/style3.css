@@ -320,6 +320,7 @@ body {
 
 .feature-icon{
     margin-right: 7%;
+    margin-top: 3%;
 }
 .ic-box {
     color: #f44121;
@@ -936,14 +937,13 @@ body {
         padding-right: 0;
     }
     .feature {
-        display: block;
+        display: flex;
         width: 85%;
         margin: 5%;
         font-size: medium;
     }
     .feature-icon {
-        margin-bottom: 5rem;
-        margin-right: 2.5rem;
+        margin-right: 6%;
     }
     .para {
         padding: 4rem;
