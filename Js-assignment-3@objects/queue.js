@@ -1,28 +1,28 @@
-class Queue{
-    constructor(){
-    this.items=[];
+function Queue(){
+
+    let items=[];
+    
+    function enqueue(element){
+        items.push(element);
+        return items;
     }
-    enqueue(element){
-        this.items.push(element);
-    }
-    dequeue(){
-        this.items.shift();
+    function dequeue(){
+        items.shift();
+        return items;
     }
 
-    isEmpty(){
-        if(this.items==0){
+    function isEmpty(){
+        if(items==0){
             console.log("Stack is empty")
-        }else{ return this.items;}
+        }else{ return items;}
     }
+    return {enqueue,dequeue,isEmpty}
 }
 
-const queue = new Queue;
-queue.enqueue(3);
-queue.enqueue(6);
-queue.enqueue(5);
-console.log(queue);
-queue.dequeue();
-console.log(queue.items);
-queue.enqueue(9);
-console.log(queue.items);
+const queue= Queue();
+console.log(queue.enqueue(2));
+console.log(queue.enqueue(4));
+console.log(queue.enqueue(6));
+console.log(queue.dequeue());
+console.log(queue.dequeue());
 console.log(queue.isEmpty());
