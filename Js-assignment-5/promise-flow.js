@@ -18,12 +18,19 @@ function getFile(file) {
     });
 }
 
-getFile('file1').then((file) => {
-    console.log(file);
-    return getFile("file2");
-}).then(function (file) {
-    console.log(file);
-    return getFile("file3")
-}).then(function (file) {
-    console.log(file)
-})
+const p1 = getFile("file1");
+const p2 = getFile("file2");
+const p3 = getFile("file3");
+
+p1.then((text) => {
+console.log(text);
+    p2.then((text)=>{
+    console.log(text);
+        p3.then((text)=>{
+        console.log(text);
+            }).catch((err)=>{
+                console.log(err);
+        });
+        }
+    )
+});
