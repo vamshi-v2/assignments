@@ -11,26 +11,23 @@ function fakeAjax(url, cb) {
         cb(fakeResponses[url]);
     }, randomDelay);
 }
-let arr = {};
 function getFile(file) {
     return new Promise(function (resolve) {
         fakeAjax(file, resolve)
     });
 }
 
-const p1 = getFile("file1");
-const p2 = getFile("file2");
-const p3 = getFile("file3");
-
-p1.then((text) => {
-console.log(text);
-    p2.then((text)=>{
-    console.log(text);
-        p3.then((text)=>{
+let arr = [getFile("file1"), getFile("file2"),getFile("file3")];
+let res=[];
+let p= Promise.resolve();
+for (let i=0; i<arr.length;i++)
+    {
+    p=p.then(()=>{
+        return arr[i];
+    }).then((text)=>{
         console.log(text);
-            }).catch((err)=>{
-                console.log(err);
-        });
-        }
-    )
-});
+    })
+}
+p.then(()=>{
+    console.log("Completed")
+})
