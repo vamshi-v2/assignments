@@ -16,10 +16,10 @@ expect(() => pattern1(-3)).toThrow("Input should be positive");
  });
 
  test("test case 3 for patterb1 (100 lines) :",()=>{
-    const lines=3;
+    const lines=100;
     const patt=pattern1(lines);
     let char= ((3/2)*lines*lines)+((1/2)*lines)-1;
-    expect(patt.length).toBe(char+2);
+    expect(patt.length).toBe(char);
 
  });
 
