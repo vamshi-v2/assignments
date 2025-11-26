@@ -1,17 +1,7 @@
 function pattern1(n) {
 
   let line = '';
-  
-  // function stringOne(a,b){
-       
-  //     for (let s = 1; s <= b - a; s++) {
-  //       line += ' ';
-  //     }
-  //     for (let j = 1; j <= 2 * a - 1; j++) {
-  //       line += 1;
-  //     }
-  // }
-  
+    
   if (n < 0) {
     throw new Error("Input should be positive");
   }
@@ -26,7 +16,6 @@ function pattern1(n) {
       }
     }
   }
-  // return stringOne;
   return line;
 }
   function stringOne(a,b){
