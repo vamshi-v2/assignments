@@ -1,4 +1,4 @@
-const pattern1 = require('../scr/pattern1');
+const  {pattern1, stringOne} = require('../scr/pattern1');
 
 describe('pattern1 test cases :', () => {
   test('test case 1 for pattern1 :', () => {
@@ -23,16 +23,9 @@ describe('pattern1 test cases :', () => {
   });
 
   test("test case 4 for pattern1 (n lines) :", () => {
-    function expectedpattern(n) {
-      for (let i = 0; i < n; i++) {
-        let res = "";
-        let s = " ".repeat(n - i - 1);
-        let p = "1".repeat(2 * i + 1);
-        console.log(res = (s + p));
-      }
-    }
-    const exp=expectedpattern(44);
-    expect(console.log(pattern1(44))).toBe(exp);
+    let res=stringOne(2,4);
+    const exp=`  111`;
+    expect(res).toBe(exp);
 
   });
 

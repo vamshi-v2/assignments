@@ -1,36 +1,48 @@
 function pattern1(n) {
 
   let line = '';
+  
+  // function stringOne(a,b){
+       
+  //     for (let s = 1; s <= b - a; s++) {
+  //       line += ' ';
+  //     }
+  //     for (let j = 1; j <= 2 * a - 1; j++) {
+  //       line += 1;
+  //     }
+  // }
+  
   if (n < 0) {
     throw new Error("Input should be positive");
   }
-
+ 
   else {
     for (let i = 1; i <= n; i++) {
-      for (let s = 1; s <= n - i; s++) {
-        line += ' ';
-      }
-      for (let j = 1; j <= 2 * i - 1; j++) {
-        line += 1;
-      }
+
+    line+=stringOne(i,n);
+
       if (i !== n) {
         line += "\n";
       }
     }
   }
+  // return stringOne;
   return line;
 }
+  function stringOne(a,b){
+      let line =""; 
+      for (let s = 1; s <= b - a; s++) {
+        line += ' ';
+      }
+      for (let j = 1; j <= 2 * a - 1; j++) {
+        line += 1;
+      }
+        return line;
+    }
+  
 
-// console.log(pattern1(44));
+console.log(pattern1(4));
 
-module.exports = pattern1;
+module.exports = {pattern1,stringOne};
+ 
 
-// function pattern1(n){
-//   for(let i =0;i<n;i++){
-//     let res="";
-//     let s=" ".repeat(n-i-1);
-//     let p="1".repeat(2*i+1);
-//     console.log(res=(s+p));
-//   }
-// }
-// pattern1(44);
