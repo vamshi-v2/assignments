@@ -1,31 +1,32 @@
-let todoarr=[];
+let todoarr = [];
 
 const nameInput = document.getElementById("name");
 const descInput = document.getElementById("desc");
 const button = document.getElementById("action-button");
-button.addEventListener('click',check);
+button.addEventListener('click', check);
 
-function check(){
+function check() {
     const name = nameInput.value.trim();
     const desc = descInput.value.trim();
-    
-    if (name === '' || desc === ''){
+
+    if (name === '' || desc === '') {
         alert("Please Enter value for both fields");
     }
-    else{
-        createTodo(name,desc);
+    else {
+        createTodo(name, desc);
     }
     displayTodo();
 }
 
-function createTodo(name,desc){
-    const todo={
-        name:name,
-        desc:desc,
+function createTodo(name, desc) {
+    const todo = {
+        name: name,
+        desc: desc,
         time: new Date().toDateString(),
     };
     todoarr.unshift(todo);
     clear();
+    console.log(todoarr);
 }
 
 function clear() {
@@ -34,43 +35,40 @@ function clear() {
 }
 
 function displayTodo() {
+    const template = document.querySelector('#list-item');
     listitems.innerHTML = '';
-    
-    todoarr.forEach((todo, index) => {
-        const todoItem = document.createElement('div');
-        todoItem.className = 'todo-item';
-        todoItem.innerHTML = `
-            <h3>${todo.name}</h3>
-            <p>${todo.desc}</p>
-            <div class="timestamp">${todo.time}</div>
-            <div class="button-group">
-                <button class="edit-btn" onclick="editTodo(${index})">Edit</button>
-                <button class="delete-btn" onclick="deleteTodo(${index})">Delete</button>
-            </div>`; 
-        listitems.appendChild(todoItem);
-    });
+  
+    todoarr.forEach((i,index) => {
+        let clone = template.content.cloneNode(true)
+        clone.querySelector('.item-name').textContent = i.name;
+        clone.querySelector('.item-desc').textContent = i.desc;
+        clone.querySelector('.item-timestamp').textContent = i.time;
+        clone.querySelector('.edit-btn').onclick=()=>editTodo(index);
+        clone.querySelector('.delete-btn').onclick=()=>deleteTodo(index);
+        listitems.append(clone);
+    })
 }
 
-function editTodo(index){
-    document.getElementById("main-title").innerHTML="Edit To-Do activity";
-    document.getElementById("name").value=todoarr[index].name;
-    document.getElementById("desc").value=todoarr[index].desc;
-    document.getElementById("action-button").innerHTML="Edit";
+function editTodo(index) {
+    document.getElementById("main-title").innerHTML = "Edit To-Do activity";
+    document.getElementById("name").value = todoarr[index].name;
+    document.getElementById("desc").value = todoarr[index].desc;
+    document.getElementById("action-button").innerHTML = "Edit";
 
     deleteTodo(index);
 
-    button.addEventListener('click',reset);
+    button.addEventListener('click', reset);
 }
 
-function deleteTodo(index){
+function deleteTodo(index) {
     todoarr.splice(index, 1);
 
     displayTodo();
 }
 
-function reset(){
-    document.getElementById("main-title").innerHTML="Create To-Do activity";
-    document.getElementById("name").value='';
-    document.getElementById("desc").value='';
-    document.getElementById("action-button").innerHTML="Save";
+function reset() {
+    document.getElementById("main-title").innerHTML = "Create To-Do activity";
+    document.getElementById("name").value = '';
+    document.getElementById("desc").value = '';
+    document.getElementById("action-button").innerHTML = "Save";
 }

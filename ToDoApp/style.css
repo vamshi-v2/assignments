@@ -76,7 +76,7 @@ body {
     align-items: center;
 }
 
-.todo-item {
+.items {
     width: 30%;
     background-color: aliceblue;
     border: #a76d4d 2px solid;
