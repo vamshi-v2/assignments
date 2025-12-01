@@ -35,18 +35,21 @@ function clear() {
 }
 
 function displayTodo() {
-    const template = document.querySelector('#list-item');
+    const list = document.querySelector('#list-item');
     listitems.innerHTML = '';
+    let fragment = new DocumentFragment();
   
     todoarr.forEach((i,index) => {
-        let clone = template.content.cloneNode(true)
+        
+        let clone = list.content.cloneNode(true)
         clone.querySelector('.item-name').textContent = i.name;
         clone.querySelector('.item-desc').textContent = i.desc;
         clone.querySelector('.item-timestamp').textContent = i.time;
         clone.querySelector('.edit-btn').onclick=()=>editTodo(index);
         clone.querySelector('.delete-btn').onclick=()=>deleteTodo(index);
         listitems.append(clone);
-    })
+    });
+    list.appendChild(fragment);
 }
 
 function editTodo(index) {
