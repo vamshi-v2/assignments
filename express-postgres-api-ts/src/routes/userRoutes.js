@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var apiContoller_js_1 = require("../controller/apiContoller.js");
+var apiContoller_js_2 = require("../controller/apiContoller.js");
+var router = express_1.default.Router();
+router.get("/student", apiContoller_js_1.getAllStudent);
+router.get("/student/:id", apiContoller_js_2.getStudentById);
+router.post("/student", apiContoller_js_2.createStudent);
+router.put("/student/:id", apiContoller_js_2.updateStudent);
+router.delete("/student/:id", apiContoller_js_2.deleteStudent);
+exports.default = router;
