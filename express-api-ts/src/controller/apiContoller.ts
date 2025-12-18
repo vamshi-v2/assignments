@@ -4,7 +4,7 @@ const { createStudent_func,
     getAllStudent_func, 
     getStudentById_func, 
     deleteStudent_func,
-    updateStudent_func } = require("../models/studentModel.js");
+    updateStudent_func } = require("../models/studentModel");
 
 const handleResponse = <T> (res :Response, status: number, message: string, data : T |null):Response =>{
     return res.status(status).json({

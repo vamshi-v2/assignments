@@ -1,4 +1,4 @@
-const  pool  = require("../config/db.js");
+const  pool  = require("../config/db");
 
 function createStuTable(){
     const queryText =  `CREATE TABLE IF NOT EXISTS student (
