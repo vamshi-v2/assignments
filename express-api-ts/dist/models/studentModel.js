@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const pool = require("../config/db.js");
+const pool = require("../config/db");
 const getAllStudent_func = async () => {
     const result = await pool.query("select * from student");
     console.log(result.rows);

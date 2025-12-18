@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const pool = require("../config/db.js");
+const pool = require("../config/db");
 function createStuTable() {
     const queryText = `CREATE TABLE IF NOT EXISTS student (
     id SERIAL PRIMARY KEY,          

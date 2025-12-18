@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const { createStudent, deleteStudent, getStudentById, updateStudent, getAllStudent } = require("../controller/apiContoller.js");
+const { createStudent, deleteStudent, getStudentById, updateStudent, getAllStudent } = require("../controller/apiContoller");
 const router = express.Router();
 router.get("/student", getAllStudent);
 router.get("/student/:id", getStudentById);

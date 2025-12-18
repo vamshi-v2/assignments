@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // import  { type Request, type Response } from "express";
-const { createStudent_func, getAllStudent_func, getStudentById_func, deleteStudent_func, updateStudent_func } = require("../models/studentModel.js");
+const { createStudent_func, getAllStudent_func, getStudentById_func, deleteStudent_func, updateStudent_func } = require("../models/studentModel");
 const handleResponse = (res, status, message, data) => {
     return res.status(status).json({
         status,

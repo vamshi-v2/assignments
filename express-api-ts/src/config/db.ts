@@ -1,7 +1,7 @@
 const  dotenv  = require("dotenv"); 
 const {Pool} = require("pg");
 // const {Pool} = pkg;
-dotenv.config();
+dotenv.config({path:`.env.${process.env.NODE_ENV}`});
 
 console.log(process.env.D_PASSWORD);
 
