@@ -2,7 +2,7 @@
 
 <h2>All Users</h2>
 {{#if users.length}}
-<table cellpadding="10">
+<table cellpadding="10" class="table">
     <thead>
         <tr>
             <th>ID</th>
@@ -17,8 +17,8 @@
         <td>{{this.name}}</td>
         <td>{{this.email}}</td>
         <td>
-            <button><a href="/users/{{this.id}}">View</a></button>
-            <button><a href="/users/update/{{this.id}}">Edit</a> </button>
+            <a class="c-btn" href="/users/{{this.id}}">View</a>
+            <a class="c-btn" href="/users/update/{{this.id}}">Edit</a>
             <form action="/users/delete/{{this.id}}" method="" style="display:inline;">
                 <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
             </form>
@@ -29,6 +29,6 @@
 {{else}}
 <p>No users found.</p>
 {{/if}}
-<p><a href="/users/create">Create New User</a></p>
+<p class="create"><a class="c-btn" href="/users/create">Create New User</a></p>
 
 {{>footer}}

@@ -1,20 +1,21 @@
 {{>header}}
 
 <h2>Create New User</h2>
-<form action="/users/create" method="POST">
-    <div>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <br>
-    <div>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <br>
-    <br>
-    <button type="submit">Submit</button>
-    <button><a href="/users">Cancel</a></button>
-</form>
+<div class="section">
+    <form action="/users/create" method="POST">
+        <div class="form">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <br>
+        <div class="form">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+        <a class="c-btn" href="/users">Cancel</a>
+    </form>
+</div>
 
 {{>footer}}
