@@ -12,14 +12,20 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      email: {
+        type: Sequelize.STRING
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+      password: {
+        type: Sequelize.STRING
+      },
+      // createdAt: {
+      //   // allowNull: false,
+      //   type: Sequelize.DATE
+      // },
+      // updatedAt: {
+      //   // allowNull: false,
+      //   type: Sequelize.DATE
+      // }
     });
   },
   async down(queryInterface, Sequelize) {

@@ -1,0 +1,24 @@
+{{>header}}
+
+<h2>User Login</h2>
+<div class="section">
+    {{#if message}}
+    <p class="message">{{message}}</p>
+    {{/if}}
+    <form action="/login" method="POST">
+        <div>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="{{user.userName}}" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" value="{{user.password}}" required>
+        </div>
+        <br>
+        <button type="submit" style="justify-content: center;">Login</button>
+        <a class="c-btn" href="/register">Register now.</a>
+    </form>
+
+</div>
+{{>footer}}

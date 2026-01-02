@@ -16,6 +16,12 @@ h2 {
 .table {
     background-color: white;
 }
+.p4{
+    background-color: white;
+    margin: 0px;
+    padding: 10px 0;
+    text-align: center;
+}
 .create {
     text-decoration: none;
     margin: 0;
@@ -23,7 +29,22 @@ h2 {
     background-color: white;
     text-align: center;
 }
+.logout {
+    text-decoration: none;
+    margin: 0;
+    padding: 2%;
+    text-align: center;
+}
 .c-btn {
+    text-decoration: none;
+    border: rgb(57, 139, 167) 2px solid;
+    padding: 2px;
+    color: white;
+    background-color: rgb(57, 139, 167);
+    font-weight: bolder;
+}
+.h-btn {
+    margin: 39%;
     text-decoration: none;
     border: rgb(57, 139, 167) 2px solid;
     padding: 2px;
@@ -54,4 +75,11 @@ button {
     font-size: medium;
     margin: 4px;
     margin-left: 0;
+}
+.message{
+    margin: 0 ;
+    padding: 10px 0;
+    color: red;
+    background-color: white;
+    text-align: center;
 }
