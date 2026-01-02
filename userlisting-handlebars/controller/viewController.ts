@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { User } from "../models/users";
 import { Creds } from "../models/admin";
+const bcrypt = require('bcrypt');
 
 // Home page - redirect to users list
 const home = async (_req: Request, res: Response) => {
@@ -10,7 +11,7 @@ const home = async (_req: Request, res: Response) => {
 // Admin Login
 const login = async (req: Request, res: Response) => {
     try {
-        req.session.isLogin=false;
+        req.session.isLogin = false;
         res.render('./users/login')
     } catch (error: any) {
         return res.status(500).json({ message: error.message });
@@ -20,27 +21,32 @@ const login = async (req: Request, res: Response) => {
 // Handle Admin Login 
 const submitLogin = async (req: Request, res: Response) => {
     try {
-        const { userName, password } = req.body;
-        const admin = await Creds.findOne({ where : { userName } })
+        const { name, password } = req.body;
+        const user = await User.findOne({ where: { name } })
+        console.log({user})
         // console.log("after db check")
-        if (admin=== null){
-            console.log( "user doesn't exist" )
-            res.render( './users/login', { message : "User doesn't exist" })
-        }else if ( admin ) {
-            if(password == admin.password){
-                req.session.isLogin=true;
+        if (user === null) {
+            console.log("user doesn't exist")
+            res.render('./users/login', { message: "User doesn't exist" })
+        } else if (user) {
+            const checkPass = await bcrypt.compare(password,user.password)
+            // console.log(password)
+            // console.log(user.password)
+            // console.log( typeof checkPass)
+            if ( checkPass) {
+                req.session.isLogin = true;
                 const users = await User.findAll();
-                res.render( './users/list', { users:users, message: "User logged in"} )
-            }else{
-                res.render( './users/login', { message : "Wrong password"} )
-                console.log( "wrong password" )
+                res.render('./users/list', { users: users, message: "User logged in" })
+            } else {
+                res.render('./users/login', { message: "Wrong password" })
+                console.log("wrong password")
             }
         } else {
             console.log("somthing went wrong")
-            res.redirect('/users/login')   
+            res.redirect('/users/login')
         }
     } catch (error: any) {
-        console.log(error)
+        // console.log(error)
         return res.status(500).json({ message: error.message });
     }
 };
@@ -60,23 +66,33 @@ const getUsers = async (req: Request, res: Response) => {
 // Show create form
 const createUser = async (req: Request, res: Response) => {
     try {
-        res.render('./users/create');
+        res.render('./users/register');
     } catch (error: any) {
         return res.status(500).json({ message: error.message });
     }
 };
 
-// Handle create form submission
+// Handle create form submission 
 const submitCreateUser = async (req: Request, res: Response) => {
     try {
-        const { name, email } = req.body;
-        if (!name || !email) {
-            return res.status(400).json({ message: 'Name and email are required' });
+        const { name, email, password, password2 } = req.body;
+        if (!name || !email || !password || !password2) {
+            return res.status(400).json({ message: 'Every field is required' });
         }
-        const user = await User.create({ name, email });
-        res.redirect('/users');
+        else if (password != password2) {
+            console.log("password do not match")
+            res.render("./users/register", { message: " password do not match" })
+        } else {    
+            let hashedpw = await bcrypt.hash(password, 8)
+            await User.create({ name, email, password:hashedpw });
+            res.render('./users/login',{message: "User registered successfully"});
+        }
+        console.log({
+            name, email, password, password2
+        })
+
     } catch (error: any) {
-        return res.render( './users/create' ,{ message: error.message });
+        return res.render('./users/register', { message: error.message });
     }
 };
 
@@ -109,7 +125,7 @@ const submitUpdateUser = async (req: Request, res: Response) => {
         const user = await User.findByPk(req.params.id);
         const { name, email } = req.body;
         await user.update({ name, email })
-        res.redirect('/users');
+        res.render('./users/list', { users: users, message: "User updated successfully"});
     } catch (error: any) {
         return res.render('./users/list', { users: users, message: error.message });
     }
@@ -122,10 +138,10 @@ const deleteUser = async (req: Request, res: Response) => {
         const user = await User.findByPk(req.params.id);
         await user.destroy();
         const users = await User.findAll();
-        res.render('./users/list', { users: users, message: "User deleted successfully"});
+        res.render('./users/list', { users: users, message: "User deleted successfully" });
     } catch (error: any) {
         return res.render('./users/list', { users: allUsers, message: "User doesn't exist" });
     }
 };
 
-module.exports = { createUser, getUserById, updateUser, deleteUser, getUsers, submitCreateUser, submitUpdateUser, home, login, submitLogin } 
+module.exports = { createUser, getUserById, updateUser, deleteUser, getUsers, submitCreateUser, submitUpdateUser, home, login, submitLogin }

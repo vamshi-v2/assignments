@@ -9,13 +9,14 @@ router.post('/login', submitLogin);
 
 router.get('/users', isLogged, getUsers);
 
-router.get('/users/create', isLogged, createUser);
-router.post('/users/create', submitCreateUser);
+router.get('/register', createUser);
+router.post('/register', submitCreateUser);
 
 router.get('/users/:id', isLogged, getUserById);
 
 router.get('/users/update/:id', isLogged, updateUser);
 router.post('/users/update/:id', submitUpdateUser);
+
 router.get('/users/delete/:id', deleteUser);
 
 module.exports = router;

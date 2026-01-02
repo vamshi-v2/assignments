@@ -5,7 +5,7 @@
     {{#if message}}
     <p class="message">{{message}}</p>
     {{/if}}
-    <form action="/users/create" method="POST">
+    <form action="/register" method="POST">
         <div class="form">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required>
@@ -16,8 +16,18 @@
             <input type="email" id="email" name="email" required>
         </div>
         <br>
+        <div class="form">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" value="{{user.password}}" required>
+        </div>
+        <br>
+        <div>
+            <label for="password2">Confirm password:</label><br>
+            <input type="password" id="password2" name="password2" value="{{user.password}}" required>
+        </div>
+        <br>
         <button type="submit">Submit</button>
-        <a class="c-btn" href="/users">Cancel</a>
+        <a class="c-btn" href="/login">Login</a>
     </form>
 </div>
 
