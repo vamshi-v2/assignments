@@ -1,32 +1,28 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from ".";
 const { Model } = require('sequelize');
-// interface UserAttributes {
-//     id: number;
-//     name: string;
-//     email: string;
-// }
-export class User extends Model {
+
+export class Creds extends Model {
     declare id: number;
-    declare name: string;
-    declare email: string;
+    declare userName: string;
+    declare password: string;
 }
-User.init({
+Creds.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    name: {
+    userName: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
+    password: {
         type: DataTypes.STRING,
         unique: true,
     },
 }, {
 
     sequelize,  
-    modelName: 'Users', 
+    modelName: 'AdminCreds', 
 }); 

@@ -1,0 +1,23 @@
+{{>header}}
+
+<h2>Admin Login</h2>
+<div class="section">
+    {{#if message}}
+    <p class="message">{{message}}</p>
+    {{/if}}
+    <form action="/login" method="POST">
+        <div>
+            <label for="userName">Name:</label><br>
+            <input type="text" id="userName" name="userName" value="{{user.userName}}" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" value="{{user.password}}" required>
+        </div>
+        <br>
+        <button type="submit" style="justify-content: center;">Login</button>
+    </form>
+
+</div>
+{{>footer}}

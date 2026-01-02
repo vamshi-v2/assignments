@@ -2,6 +2,9 @@
 
 <h2>Create New User</h2>
 <div class="section">
+    {{#if message}}
+    <p class="message">{{message}}</p>
+    {{/if}}
     <form action="/users/create" method="POST">
         <div class="form">
             <label for="name">Name:</label><br>

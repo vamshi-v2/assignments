@@ -1,6 +1,9 @@
 {{>header}}
 
 <h2>All Users</h2>
+{{#if message}}
+    <p class="message" style="color: green;">{{message}}</p>
+    {{/if}}
 {{#if users.length}}
 <table cellpadding="10" class="table">
     <thead>
@@ -27,8 +30,9 @@
     {{/each}}
 </table>
 {{else}}
-<p>No users found.</p>
+<p class="p4">No users found.</p>
 {{/if}}
 <p class="create"><a class="c-btn" href="/users/create">Create New User</a></p>
+<p class="logout"><a class="c-btn" href="/login">Logout</a></p>
 
 {{>footer}}

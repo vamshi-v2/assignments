@@ -2,6 +2,7 @@
 
 <h2>Edit User</h2>
 <div class="section">
+    {{#if user}}
     <form action="/users/update/{{user.id}}" method="POST">
         <div>
             <label for="name">Name:</label><br>
@@ -14,7 +15,12 @@
         </div>
         <br>
         <button type="submit">Update User</button>
-        <a class="c-btn" href="/users/{{user.id}}">Cancel</a>
+        <a class="c-btn" href="/users">Cancel</a>
     </form>
+    {{else}}
+    <p class="p4">No users found.</p>
+    <a class="h-btn" href="/users/{{user.id}}">Home</a>
+    {{/if}}
+
 </div>
 {{>footer}}

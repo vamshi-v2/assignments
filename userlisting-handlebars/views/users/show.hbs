@@ -2,6 +2,8 @@
 
 <h2>User Detail</h2>
 <div class="section">
+
+    {{#if user}}
     <p class="display-id"><b>ID:</b>{{user.id}}</p>
     <p class="display-id"><b>Name:</b>{{user.name}}</p>
     <p class="display-id"><b>Email:</b>{{user.email}}</p>
@@ -10,6 +12,10 @@
         <a class="c-btn" href="/users/update/{{user.id}}">Edit</a>
         <a class="c-btn" href="/users">Back to List</a>
     </p>
+    {{else}}
+    <p class="p4">No users found.</p>
+    <a class="h-btn" href="/users/{{user.id}}">Home</a>
+    {{/if}}
 </div>
 
 {{>footer}}
