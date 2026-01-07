@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { User } from "../models/users";
-import { Creds } from "../models/admin";
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 // Home page - redirect to users list
 const home = async (_req: Request, res: Response) => {
@@ -11,7 +11,7 @@ const home = async (_req: Request, res: Response) => {
 // Admin Login
 const login = async (req: Request, res: Response) => {
     try {
-        req.session.isLogin = false;
+        res.clearCookie('token');
         res.render('./users/login')
     } catch (error: any) {
         return res.status(500).json({ message: error.message });
@@ -19,22 +19,25 @@ const login = async (req: Request, res: Response) => {
 };
 
 // Handle Admin Login 
-const submitLogin = async (req: Request, res: Response) => {
-    try {
+const submitLogin = async (req: Request, res: Response, next: NextFunction) => {
+    // try {
         const { name, password } = req.body;
+        console.log(User)
         const user = await User.findOne({ where: { name } })
-        console.log({user})
-        // console.log("after db check")
+
         if (user === null) {
             console.log("user doesn't exist")
             res.render('./users/login', { message: "User doesn't exist" })
         } else if (user) {
-            const checkPass = await bcrypt.compare(password,user.password)
-            // console.log(password)
-            // console.log(user.password)
-            // console.log( typeof checkPass)
-            if ( checkPass) {
-                req.session.isLogin = true;
+            let plainUser = JSON.parse(JSON.stringify(user));
+            const token = jwt.sign(plainUser, process.env.JWT_SECRET_KEY, { expiresIn: "10m" },)
+
+            res.cookie('token', token)
+            const checkPass = await bcrypt.compare(password, user.password)
+
+            if (checkPass) {
+                // req.session.isLogin = true;
+                // res.redirect('/users')
                 const users = await User.findAll();
                 res.render('./users/list', { users: users, message: "User logged in" })
             } else {
@@ -44,12 +47,13 @@ const submitLogin = async (req: Request, res: Response) => {
         } else {
             console.log("somthing went wrong")
             res.redirect('/users/login')
-        }
-    } catch (error: any) {
-        // console.log(error)
-        return res.status(500).json({ message: error.message });
-    }
-};
+            //     console.log({user})
+
+        }}
+//     } catch (error: any) {
+//         return res.status(500).json({ message: error.message });
+//     }
+// };
 
 
 // List all users
@@ -65,6 +69,7 @@ const getUsers = async (req: Request, res: Response) => {
 
 // Show create form
 const createUser = async (req: Request, res: Response) => {
+    res.clearCookie('token');
     try {
         res.render('./users/register');
     } catch (error: any) {
@@ -82,10 +87,10 @@ const submitCreateUser = async (req: Request, res: Response) => {
         else if (password != password2) {
             console.log("password do not match")
             res.render("./users/register", { message: " password do not match" })
-        } else {    
+        } else {
             let hashedpw = await bcrypt.hash(password, 8)
-            await User.create({ name, email, password:hashedpw });
-            res.render('./users/login',{message: "User registered successfully"});
+            await User.create({ name, email, password: hashedpw });
+            res.render('./users/login', { message: "User registered successfully" });
         }
         console.log({
             name, email, password, password2
@@ -120,14 +125,14 @@ const updateUser = async (req: Request, res: Response) => {
 
 // Handle update form submission
 const submitUpdateUser = async (req: Request, res: Response) => {
-    const users = await User.findAll();
     try {
         const user = await User.findByPk(req.params.id);
         const { name, email } = req.body;
         await user.update({ name, email })
-        res.render('./users/list', { users: users, message: "User updated successfully"});
+        const users = await User.findAll();
+        res.render('./users/list', { users: users, message: "User updated successfully" });
     } catch (error: any) {
-        return res.render('./users/list', { users: users, message: error.message });
+        return res.render('./users/list', { message: error.message });
     }
 };
 
