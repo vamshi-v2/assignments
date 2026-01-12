@@ -119,15 +119,17 @@ const submitUpdateUser = async (req: Request, res: Response) => {
     const users = await User.findAll();
     try {
         const user = await User.findByPk(req.params.id);
-        console.log(user.name)
         const { name, email } = req.body;
-        await user.update({ name, email })
-        // res.render('./users/list', { users: users, message: "User updated successfully"});
-        res.redirect('/users')
-        // res.
+        const username = await User.findOne({ where: { name } })
+        if (!username) {
+            console.log("User name is okay")
+            await user.update({ name, email })
+            res.redirect('/users')
+        } else {
+            res.redirect('/users')
+        }
     } catch (error: any) {
         return res.render('./users/list', { users: users, message: error.message });
-        // res.redirect( '/users' )
     }
 };
 
@@ -139,7 +141,7 @@ const deleteUser = async (req: Request, res: Response) => {
         await user.destroy();
         const users = await User.findAll();
         // res.render('./users/list', { users: users, message: "User deleted successfully" });
-        res.redirect( '/users' )
+        res.redirect('/users')
 
     } catch (error: any) {
         return res.render('./users/list', { users: allUsers, message: "User doesn't exist" });
