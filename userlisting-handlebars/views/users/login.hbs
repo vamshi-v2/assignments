@@ -1,7 +1,7 @@
 {{>header}}
 
-<h2>User Login</h2>
-<div class="section">
+<div class="section-login">
+    <h2>User Login</h2>
     {{#if message}}
     <p class="message">{{message}}</p>
     {{/if}}
@@ -16,9 +16,8 @@
             <input type="password" id="password" name="password" value="{{user.password}}" required>
         </div>
         <br>
-        <button type="submit" style="justify-content: center;">Login</button>
+        <button type="submit btn-open" style="justify-content: center;">Login</button>
         <a class="c-btn" href="/register">Register now.</a>
     </form>
-
 </div>
 {{>footer}}

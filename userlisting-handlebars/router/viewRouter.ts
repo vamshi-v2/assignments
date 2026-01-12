@@ -3,7 +3,6 @@ const { createUser, deleteUser, updateUser, getUserById, getUsers,submitCreateUs
 const router = Router();
 const { isLogged } = require('../middleware/checklogin')
 
-
 router.get('/login', login);
 router.post('/login', submitLogin);
 
