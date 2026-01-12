@@ -1,7 +1,7 @@
 {{>header}}
 
 <h2>User Detail</h2>
-<div class="section">
+<div class="section-view">
 
     {{#if user}}
     <p class="display-id"><b>ID:</b>{{user.id}}</p>
@@ -9,7 +9,7 @@
     <p class="display-id"><b>Email:</b>{{user.email}}</p>
 
     <p class="display-p">
-        <a class="c-btn" href="/users/update/{{user.id}}">Edit</a>
+        <a class="c-btn editBtn" id="editBtn" onclick='editFunction({{user.id}})'>Edit</a>
         <a class="c-btn" href="/users">Back to List</a>
     </p>
     {{else}}

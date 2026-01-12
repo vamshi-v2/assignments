@@ -1,38 +1,61 @@
 {{>header}}
 
-<h2>All Users</h2>
-{{#if message}}
+<div class="main" id="main">
+    <h2>All Users</h2>
+    {{#if message}}
     <p class="message" style="color: green;">{{message}}</p>
     {{/if}}
-{{#if users.length}}
-<table cellpadding="10" class="table">
-    <thead>
+    {{#if users.length}}
+    <table cellpadding="10" class="table" id="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {{#each users}}
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <td>{{this.id}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>
+                {{!-- View button for every user --}}
+                <a class="c-btn viewBtn" id="viewBtn" onclick="viewFunction({{this.id}})">View</a>
+                <div id="viewModal" class="modal">
+                    <div class="section" id="viewForm">
+                        {{!-- <h3>View User</h3>
+                        <p class="display-id"><b>ID:</b>{{this.id}}</p>
+                        <p class="display-id"><b>Name:</b>{{this.name}}</p>
+                        <p class="display-id"><b>Email:</b>{{this.email}}</p>
+
+                        <p class="display-p">
+                            <a class="c-btn" href="/users/update/{{user.id}}">Edit</a>
+                            <a class="c-btn" href="/users">Back to List</a>
+                        </p> --}}
+                    </div>
+                </div>
+
+                {{!-- Edit button for each User --}}
+                <a class="c-btn editBtn" id="editBtn" onclick='editFunction({{this.id}})'>Edit</a>
+                <div id="editModal" class="modal">
+                    <div class="section" id="editForm">
+                    </div>
+                </div>
+                <form action="/users/delete/{{this.id}}" method="GET" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
         </tr>
-    </thead>
-    {{#each users}}
-    <tr>
-        <td>{{this.id}}</td>
-        <td>{{this.name}}</td>
-        <td>{{this.email}}</td>
-        <td>
-            <a class="c-btn" href="/users/{{this.id}}">View</a>
-            <a class="c-btn" href="/users/update/{{this.id}}">Edit</a>
-            <form action="/users/delete/{{this.id}}" method="" style="display:inline;">
-                <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
-            </form>
-        </td>
-    </tr>
-    {{/each}}
-</table>
-{{else}}
-<p class="p4">No users found.</p>
-{{/if}}
-{{!-- <p class="create"><a class="c-btn" href="/users/create">Create New User</a></p> --}}
+        {{/each}}
+    </table>
+    {{else}}
+    <p class="p4">No users found.</p>
+    {{!-- <p class="p4"><a class="c-bt" href="/register">Register / Create User</a></p> --}}
+    {{/if}}
+</div>
+<br><br>
 <p class="logout"><a class="c-btn" href="/login">Logout</a></p>
 
 {{>footer}}

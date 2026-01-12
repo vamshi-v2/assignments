@@ -42,8 +42,7 @@ db.sequelize.sync().then(() => {
     app.use(express.json());
     app.use('/api', userRoutes);
     app.use('/', viewRoutes);
-    // app.use('/login', );
     app.listen(port, () => {
-        console.log(`App listing on port http://localhost:${port}`);
+        console.log(`App listing on port http://localhost:${port}/`);
     })
 })
