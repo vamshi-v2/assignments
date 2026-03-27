@@ -1,0 +1,20 @@
+{{>header}}
+
+<h2>Edit User</h2>
+<div class="section">
+    <form action="/users/update/{{user.id}}" method="POST">
+        <div>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="{{user.name}}" required>
+        </div>
+        <br>
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="{{user.email}}" required>
+        </div>
+        <br>
+        <button type="submit">Update User</button>
+        <a class="c-btn" href="/users/{{user.id}}">Cancel</a>
+    </form>
+</div>
+{{>footer}}

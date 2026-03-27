@@ -1,0 +1,57 @@
+body {
+    margin: 3%;
+    background-color: powderblue;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    background-color: white;
+    margin: 0;
+    padding: 3%;
+    text-align: center;
+}
+.table {
+    background-color: white;
+}
+.create {
+    text-decoration: none;
+    margin: 0;
+    padding: 2%;
+    background-color: white;
+    text-align: center;
+}
+.c-btn {
+    text-decoration: none;
+    border: rgb(57, 139, 167) 2px solid;
+    padding: 2px;
+    color: white;
+    background-color: rgb(57, 139, 167);
+    font-weight: bolder;
+}
+.section {
+    background-color: white;
+    padding-left: 5%;
+}
+h4 {
+    text-align: center;
+}
+.display-p {
+    margin: 0;
+    padding: 5%;
+    padding-left: 0;
+}
+.display-id {
+    margin-top: 0;
+}
+button {
+    background-color: rgb(57, 139, 167);
+    border: rgb(57, 139, 167) 2px solid;
+    color: white;
+    font-weight: bolder;
+    font-size: medium;
+    margin: 4px;
+    margin-left: 0;
+}

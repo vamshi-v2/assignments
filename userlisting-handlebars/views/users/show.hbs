@@ -1,0 +1,15 @@
+{{>header}}
+
+<h2>User Detail</h2>
+<div class="section">
+    <p class="display-id"><b>ID:</b>{{user.id}}</p>
+    <p class="display-id"><b>Name:</b>{{user.name}}</p>
+    <p class="display-id"><b>Email:</b>{{user.email}}</p>
+
+    <p class="display-p">
+        <a class="c-btn" href="/users/update/{{user.id}}">Edit</a>
+        <a class="c-btn" href="/users">Back to List</a>
+    </p>
+</div>
+
+{{>footer}}
