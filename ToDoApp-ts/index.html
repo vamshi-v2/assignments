@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>To-Do App</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="app-name">To-Do App</h1>
+        <div class="main-box">
+            <h3 class="todo-title" id="main-title">Create To-Do activity</h3>
+            <label for="name" class="todoname">Name:</label>
+            <input type="text" name="name" placeholder="Enter To-Do activity" id="name">
+            <label for="desc" class="tododesc">Description:</label>
+            <textarea name="desc" placeholder="Enter description about activity" id="desc"></textarea>
+            <button class="main-button" id="action-button">Save</button>
+        </div>
+        <div class="todo-list">
+            <h2 class="list-title">To-do List</h3>
+                <div id="listitems">
+                </div>
+                <template id="list-item">
+                    <div class="items">
+                        <h3 class="item-name"></h3>
+                        <p class="item-desc"></p>
+                        <div class="item-timestamp"></div>
+                        <div class="button-group">
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    </div>
+                </template>
+
+        </div>
+    </div>
+    <script src="./script2.js"></script>
+</body>
+
+</html>
